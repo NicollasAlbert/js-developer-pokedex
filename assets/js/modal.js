@@ -1,5 +1,6 @@
 const pokemonDetails = document.querySelector('.pokemonDetails')
 const buttonClose = document.querySelector('.button-close')
+const openDialog = document.getElementById('openDialog')
 
 function showPokemonDetails(pokemon) {
   return `
