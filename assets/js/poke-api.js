@@ -6,7 +6,7 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
     pokemon.number = pokeDetail.id
     pokemon.name = pokeDetail.name
     pokemon.height = pokeDetail.height
-    pokemon.weight = pokeDetail.height
+    pokemon.weight = pokeDetail.weight
 
     const abilities = pokeDetail.abilities.map(abilitieSlot => abilitieSlot.ability.name)
     pokemon.abilities = abilities
