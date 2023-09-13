@@ -5,29 +5,33 @@ const openDialog = document.getElementById('openDialog')
 
 function convertPokemonToDialog(pokemon) {
   return `
-    <div class="${pokemon.type}">
-      <span class="number">#${pokemon.number}</span>
-      <span class="name">${pokemon.name}</span>
+    <div class="dialogDetail ${pokemon.type}">
+      <div class="header">
+        <span>#${pokemon.number}</span>
+        <span>${pokemon.name}</span>
+      </div>
       <img src="${pokemon.photo}" alt="${pokemon.name}">
-      <div>
-      <span class="number">Weight: ${pokemon.weight}</span>
-      <span class="name"> Height: ${pokemon.height}</span>
-        <ol class="types">
-          ${pokemon.abilities.map((ability) => `<li class="type ${ability}">${ability}</li>`).join('')}
+      <div class="info">
+      <span>Weight: ${pokemon.weight}</span>
+      <span>Height: ${pokemon.height}</span>
+      </div>
+      <div class="abilitiesDetails">
+      <span>ABILITIES</span>
+        <ol class="abilities">
+          ${pokemon.abilities.map((ability) => `<li class="abilitie">${ability}</li>`).join('')}
         </ol>
       </div>
     </div>
   
-  `
+   `
 }
 
 pokemonList.onclick = (event) => {
 const selectedPokemon = event.target.closest('.pokemon');
 const idPokemon = Number(selectedPokemon.attributes.id.value)
-console.log(pokeApi.getPokemonDialog(idPokemon))
 
 if(idPokemon) {
-      
+        
       pokeApi.getPokemonDialog(idPokemon).then(pokemon => {
       const dialogHtml = convertPokemonToDialog(pokemon);
       pokemonDetails.innerHTML = dialogHtml;
