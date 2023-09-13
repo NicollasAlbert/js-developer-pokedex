@@ -1,5 +1,5 @@
 const pokemonDetails = document.querySelector('.pokemonDetails')
-const buttonClose = document.querySelector('.button-close')
+const buttonClose = document.querySelector('.buttonClose')
 const openDialog = document.getElementById('openDialog')
 
 
@@ -29,12 +29,12 @@ console.log(pokeApi.getPokemonDialog(idPokemon))
 if(idPokemon) {
       
       pokeApi.getPokemonDialog(idPokemon).then(pokemon => {
-      const dialogHtml = pokemon.map(convertPokemonToDialog).join('');
+      const dialogHtml = convertPokemonToDialog(pokemon);
       pokemonDetails.innerHTML = dialogHtml;
       openDialog.showModal();
     })
     .catch((error) => {
-      console.error("Erro ao buscar informações do Pokémon:", error);
+      console.error("Erro:", error);
     });
   }
 }

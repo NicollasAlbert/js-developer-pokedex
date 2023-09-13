@@ -1,0 +1,23 @@
+.pokemonDetails {
+  display: grid;
+  margin: 0;
+  padding: 0;
+}
+
+dialog {
+  position: absolute;
+  border: none;
+  padding: 0;
+  list-style: none;
+}
+
+dialog[open] {
+  padding: 0;
+}
+
+.buttonClose {
+  display: block;
+  border: none;
+  position: relative;
+  align-content: right;
+}
