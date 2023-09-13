@@ -38,3 +38,9 @@ pokeApi.getPokemons = (offset = 0, limit = 5) => {
         .then((detailRequests) => Promise.all(detailRequests))
         .then((pokemonsDetails) => pokemonsDetails)
 }
+
+pokeApi.getPokemonDialog = (id) => {
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    .then(r => r.json())
+    .then(r =>convertPokeApiDetailToPokemon(r))
+}

@@ -22,19 +22,20 @@ function convertPokemonToDialog(pokemon) {
 }
 
 pokemonList.onclick = (event) => {
-//     console.log(pokeApi.getPokemons(offset, limit).then((pokemons) => {
-//     const newHtml = pokemons.map(convertPokemonToDialog).join('')
-//     pokemonDetails.innerHTML += newHtml
-// }))
 const selectedPokemon = event.target.closest('.pokemon');
-console.log(selectedPokemon.attributes.id)
+const idPokemon = Number(selectedPokemon.attributes.id.value)
+console.log(pokeApi.getPokemonDialog(idPokemon))
 
-if(selectedPokemon) {
-  const idPokemon = document.getElementById(`"${event.number}"`)
-  console.log(event.target)
-  console.log(idPokemon);
-    openDialog.showModal();
-
+if(idPokemon) {
+      
+      pokeApi.getPokemonDialog(idPokemon).then(pokemon => {
+      const dialogHtml = pokemon.map(convertPokemonToDialog).join('');
+      pokemonDetails.innerHTML = dialogHtml;
+      openDialog.showModal();
+    })
+    .catch((error) => {
+      console.error("Erro ao buscar informações do Pokémon:", error);
+    });
   }
 }
 
